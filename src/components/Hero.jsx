@@ -1,7 +1,7 @@
 import shoes from "../assets/shoes.png";
 const Hero = () => {
   return (
-    <main className="h-[90vh] relative w-full md:px-[17rem]">
+    <main className="h-[100vh] relative w-full md:px-[10%] py-24">
       <div className="h-full w-[60%] flex flex-col py-28 items-start gap-14">
         <h1 className="text-8xl">
           KICKS <br />
@@ -16,11 +16,11 @@ const Hero = () => {
           Get it
         </button>
       </div>
-      <div className="bg-black h-full w-[40%] absolute right-0 top-0">
+      <div className="bg-[#191818] h-full w-[40%] absolute right-0 top-0">
         
       </div>
-      <div className="absolute right-0 top-0 py-20 pr-60">
-        <img src={shoes} alt="" srcset="" className="h-[600px] object-cover"/>
+      <div className="absolute right-0 top-0 pt-60 pr-60 z-10">
+        <img src={shoes} alt="" srcset="" className="object-cover"/>
       </div>
     </main>
   );
