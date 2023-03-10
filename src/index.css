@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.dark {
+  @apply bg-[#191818] text-zinc-50/80;
+}
 body{
   background-color: #F0ECEC;
 }
