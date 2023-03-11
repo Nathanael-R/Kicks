@@ -5,11 +5,11 @@ import whiteShoe from '../assets/whiteShoe.png'
 
 const Trending = () => {
   return (
-    <section className='px-[15%] py-20 relative'>
+    <section className='px-[15%] py-20 relative hidden'>
       <h2 className='text-6xl mb-16'>Trending Shoes</h2>
       <div className="flex justify-center">
         <div className="rounded">
-            <img src={shoeBg} alt="" srcset=""/>
+            <img src={shoeBg} alt=""/>
         </div>
         <div className="z-20 -ml-20 flex flex-col justify-between py-8">
           <div className="">
@@ -18,9 +18,9 @@ const Trending = () => {
             <button className='w-36 border-2 bg-white py-3 rounded-full dark:bg-[#191818] font-bold'>GET IT</button>
           </div>
           <div className="flex gap-10">
-            <img src={redShoe} alt="" srcset="" className='w-[20%] cursor-pointer'/>
-            <img src={whiteShoe} alt="" srcset="" className='w-[20%] cursor-pointer'/>
-            <img src={blueShoe} alt="" srcset="" className='w-[20%] cursor-pointer'/>
+            <img src={redShoe} alt=""  className='w-[20%] cursor-pointer'/>
+            <img src={whiteShoe} alt=""  className='w-[20%] cursor-pointer'/>
+            <img src={blueShoe} alt=""  className='w-[20%] cursor-pointer'/>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaShoppingBasket } from "react-icons/fa";
+import { TiShoppingCart } from "react-icons/ti";
 import kickslogo from "../assets/kickslogo.png";
 
 export default function NavBar({ darkModeToggle, darkMode }) {
@@ -10,8 +10,8 @@ export default function NavBar({ darkModeToggle, darkMode }) {
       <div className="justify-between mx-auto  md:items-center md:flex">
         <div>
           <div className="flex items-center justify-between md:py-4 md:block">
-            <a href="javascript:void(0)">
-              <img src={kickslogo} alt="" srcset="" width={60} />
+            <a href="#">
+              <img src={kickslogo} alt="" width={60} />
             </a>
             <div className="md:hidden">
               <button
@@ -59,24 +59,24 @@ export default function NavBar({ darkModeToggle, darkMode }) {
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="text-white hover:text-indigo-200">
-                <a href="javascript:void(0)">Home</a>
+                <a href="#">Home</a>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <a href="javascript:void(0)">Blog</a>
+                <a href="#">Blog</a>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <a href="javascript:void(0)">About US</a>
+                <a href="#">About US</a>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <a href="javascript:void(0)">Contact US</a>
+                <a href="#">Contact US</a>
               </li>
             </ul>
 
             <div className="mt-3 space-y-2 md:hidden">
-              <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" value="" class="sr-only peer" />
-                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" value="" className="sr-only peer" />
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
                   Toggle me
                 </span>
               </label>
@@ -102,7 +102,7 @@ export default function NavBar({ darkModeToggle, darkMode }) {
           </div>
           <div className="relative p-2">
             <button className="text-zinc-50/80">
-              <FaShoppingBasket size={30} />
+              <TiShoppingCart size={35} />
             </button>
             <p className="absolute top-0 right-0 text-white bg-red-500 px-1 font-bold">
               0

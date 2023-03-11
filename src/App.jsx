@@ -4,7 +4,7 @@ import NavBar from "./components/Navbar"
 import Home from "./pages/Home"
 function App() {
    const [darkMode, setDarkMode] = useState(false)
-
+   
    const darkModeToggle = () => {
     setDarkMode(!darkMode)
    }

@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className="md:py-8 px-[15%] sm:py-4 py-2 flex flex-col gap-8 sm:flex bg-[#191818]">
       <div className="flex md:flex-row flex-col justify-between items-center md:gap-0 gap-6">
-        <img src={kickslogo} alt="" srcset="" width={60} />
+        <img src={kickslogo} alt="" width={60} />
         <ul className="text-white font-semibold md:text-xl flex flex-wrap justify-center gap-6">
           <li>Home</li>
           <li>Movies</li>
