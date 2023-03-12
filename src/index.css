@@ -8,3 +8,17 @@
 body{
   background-color: #F0ECEC;
 }
+nav ul li{
+  display: inline-block;
+}
+nav ul li::after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 3px;
+  background: gold;
+  transition: width .3s;
+}
+nav ul li:hover::after{
+  width: 100%
+}

@@ -57,17 +57,17 @@ export default function NavBar({ darkModeToggle, darkMode }) {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-white hover:text-indigo-200">
+            <ul className="items-center justify-center space-y-8 md:flex md:space-x-10 md:space-y-0 font-bold">
+              <li className="text-white">
                 <a href="#">Home</a>
               </li>
-              <li className="text-white hover:text-indigo-200">
+              <li className="text-white">
                 <a href="#">Blog</a>
               </li>
-              <li className="text-white hover:text-indigo-200">
+              <li className="text-white">
                 <a href="#">About US</a>
               </li>
-              <li className="text-white hover:text-indigo-200">
+              <li className="text-white">
                 <a href="#">Contact US</a>
               </li>
             </ul>
