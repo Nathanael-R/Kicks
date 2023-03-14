@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/Navbar";
+import CartProvider from "./Context/CartContext";
+import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 
 function App() {
@@ -11,9 +14,14 @@ function App() {
   };
   return (
     <div className={darkMode ? "dark" : null}>
-      <NavBar darkModeToggle={darkModeToggle} darkMode={darkMode} />
-      <Home />
-      <Footer />
+      <CartProvider>
+        <NavBar darkModeToggle={darkModeToggle} darkMode={darkMode} />
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+        <Footer />
+      </CartProvider>
     </div>
   );
 }

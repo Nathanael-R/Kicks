@@ -1,6 +1,7 @@
 import {FaArrowDown} from 'react-icons/fa'
 import coloured from '../assets/colourful.png'
 const Faq = () => {
+  
   return (
     <section className="px-[10%] min-h-[100vh] flex justify-center items-center"> 
         <div className="flex shadow-[2px_2px_20px_2px_grey] rounded flex-wrap">

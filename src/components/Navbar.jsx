@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { TiShoppingCart } from "react-icons/ti";
 import kickslogo from "../assets/kickslogo.png";
+import { Link } from "react-router-dom";
+import { CartContext } from "../Context/CartContext";
 
 export default function NavBar({ darkModeToggle, darkMode }) {
+  const cart = useContext(CartContext)
   const [navbar, setNavbar] = useState(false);
-
+  
+  const count = cart.list.reduce((sum, product) => sum + product.quantity, 0)
   return (
     <nav className="w-full bg-[#191818] fixed z-40 px-[15%]">
-      <div className="justify-between mx-auto  md:items-center md:flex">
+      <div className="justify-between mx-auto md:items-center md:flex">
         <div>
           <div className="flex items-center justify-between md:py-4 md:block">
             <a href="#">
@@ -58,9 +62,9 @@ export default function NavBar({ darkModeToggle, darkMode }) {
             }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-10 md:space-y-0 font-bold">
-              <li className="text-white">
-                <a href="#">Home</a>
-              </li>
+              <Link to='/'>
+                <li className="text-white">Home</li>
+              </Link>
               <li className="text-white">
                 <a href="#">Blog</a>
               </li>
@@ -101,11 +105,13 @@ export default function NavBar({ darkModeToggle, darkMode }) {
             </span>
           </div>
           <div className="relative p-2">
-            <button className="text-zinc-50/80">
-              <TiShoppingCart size={35} />
-            </button>
+            <Link to="/cart">
+              <button className="text-zinc-50/80">
+                <TiShoppingCart size={35} />
+              </button>
+            </Link>
             <p className="absolute top-0 right-0 text-white bg-red-500 px-1 font-bold">
-              0
+              {count}
             </p>
           </div>
         </div>

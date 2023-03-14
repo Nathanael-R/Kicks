@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { FaShoppingBasket } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import product from "../products/product";
+import { CartContext } from "../Context/CartContext";
+import { productList } from "../products/product";
 
 const Catalogue = () => {
+  const cart = useContext(CartContext);
   const notif = () => {
     return toast.success("Added to Cart", {
       position: toast.POSITION.TOP_RIGHT,
@@ -13,8 +16,8 @@ const Catalogue = () => {
     <section className="min-h-[100vh] px-[15%] py-16">
       <h2 className="text-6xl mb-10">All Shoes</h2>
       <div className="flex flex-wrap gap-8">
-        {product.map((item) => (
-          <div className="mb-6 relative">
+        {productList.map((item, key) => (
+          <div className="mb-6 relative" key={item.id}>
             <img
               src={item?.image}
               alt="redShoe2"
@@ -30,7 +33,10 @@ const Catalogue = () => {
               color="gray"
               size={30}
               cursor="pointer"
-              onClick={notif}
+              onClick={() => {
+                cart.addToCart(item.id);
+                notif();
+              }}
             />
             <ToastContainer />
           </div>
