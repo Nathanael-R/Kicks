@@ -1,27 +1,21 @@
 import shoes from "../assets/shoes.png";
 const Hero = () => {
   return (
-    <main className="h-[100vh] relative w-full md:px-[15%] py-24 hidden">
-      <div className="h-full w-[60%] flex flex-col py-28 items-start gap-14">
-        <h1 className="text-8xl">
-          KICKS <br />
-          ORIGINAL
-        </h1>
-        <p className="w-[500px] text-2xl">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-          odio esse tempora cumque laboriosam rerum vero suscipit sunt
-          repellendus pariatur?
-        </p>
-        <button className="w-[200px] rounded-full py-3 border-2 border-black text-2xl dark:border-zinc-50/70">
-          Get it
-        </button>
+    <main className="h-[100vh] relative w-full md:px-56 py-24 flex">
+      <div className="flex items-center justify-between w-full z-10">
+        <div className="flex flex-col items-start gap-8 w-[25rem]">
+          <h1 className="text-8xl">KICKS ORIGINAL</h1>
+          <p className="text-xl">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore rem
+            iure quod sint numquam nobis nulla aut mollitia ipsam vel?
+          </p>
+          <button className="border-2 font-bold text-2xl border-black px-6 py-2 rounded-full">ORDER</button>
+        </div>
+        <div className="max-w-[70%]">
+          <img src={shoes} alt="shoes" className="h-[32rem] object-cover"/>
+        </div>
       </div>
-      <div className="bg-[#191818] h-full w-[40%] absolute right-0 top-0">
-        
-      </div>
-      <div className="absolute right-0 top-0 pt-60 pr-72 z-10">
-        <img src={shoes} alt="" className="object-cover"/>
-      </div>
+      <div className="w-[35%] h-full absolute bg-black right-0 top-0"></div>
     </main>
   );
 };

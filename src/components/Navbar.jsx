@@ -10,7 +10,7 @@ export default function NavBar({ darkModeToggle, darkMode }) {
   
   const count = cart.list.reduce((sum, product) => sum + product.quantity, 0)
   return (
-    <nav className="w-full bg-[#191818] fixed z-40 px-[15%]">
+    <nav className="w-full bg-[#191818] fixed z-40 px-56">
       <div className="justify-between mx-auto md:items-center md:flex">
         <div>
           <div className="flex items-center justify-between md:py-4 md:block">
