@@ -1,7 +1,7 @@
 import shoes from "../assets/shoes.png";
 const Hero = () => {
   return (
-    <main className="h-[100vh] relative w-full md:px-56 py-24 flex">
+    <main className="h-[100vh] relative w-full md:px-56 py-24 flex snap-start snap-always">
       <div className="flex items-center justify-between w-full z-10">
         <div className="flex flex-col items-start gap-8 w-[25rem]">
           <h1 className="text-8xl">KICKS ORIGINAL</h1>

@@ -17,7 +17,7 @@ function App() {
       <CartProvider>
         <NavBar darkModeToggle={darkModeToggle} darkMode={darkMode} />
         <Routes>
-          <Route index element={<Home />} />
+          <Route index element={<Home darkMode={darkMode}/>} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
         <Footer />

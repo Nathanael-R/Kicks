@@ -5,6 +5,9 @@
 .dark {
   @apply bg-[#191818] text-zinc-50/80;
 }
+html{
+  scroll-snap-type: y mandatory;
+}
 body{
   background-color: #F0ECEC;
 }
