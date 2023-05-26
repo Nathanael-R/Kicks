@@ -5,7 +5,7 @@ import whiteShoe from "../assets/whiteShoe.png";
 
 const Trending = () => {
   return (
-    <section className="relative px-56 flex items-center h-[100vh] justify-between snap-start snap-always">
+    <section className="relative px-48 flex items-center h-[100vh] justify-between snap-start snap-always">
       <div className="flex items-start h-full gap-4 w-[70%]">
         <div className="bg-white h-[65%] flex flex-col justify-end max-w-[20rem]">
           <img src={blueShoe} alt="" className="h-[18rem] object-cover" />
