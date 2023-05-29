@@ -7,15 +7,15 @@ const Trending = () => {
 
   const addToCart = useStore((store) => store.addToCart)
   return (
-    <section className="relative px-48 flex items-center h-[100vh] justify-between snap-start snap-always">
+    <section className="relative flex items-center h-[100vh] justify-between snap-start snap-always px-44">
       <div className="flex items-start h-full gap-4 w-[70%]">
-        <div className="bg-white h-[65%] flex flex-col justify-end max-w-[20rem]">
-          <img src={blueShoe} alt="" className="h-[18rem] object-cover" />
+        <div className="bg-white h-[65%] flex flex-col justify-end max-w-[18rem]">
+          <img src={blueShoe} alt="" className="h-[15rem] object-cover" />
         </div>
-        <div className="bg-black h-[80%] flex flex-col justify-end max-w-[20rem]">
-          <img src={redShoe} alt="" className="h-[18rem] object-cover" />
+        <div className="bg-black h-[80%] flex flex-col justify-end max-w-[18rem]">
+          <img src={redShoe} alt="" className="h-[15rem] object-cover" />
         </div>
-        <div className="bg-yellow-400 h-[50%] flex flex-col justify-end max-w-[20rem]">
+        <div className="bg-yellow-400 h-[50%] flex flex-col justify-end max-w-[15rem]">
           <img src={whiteShoe} alt="" className="h-[18rem] object-cover" onClick={addToCart}/>
         </div>
       </div>

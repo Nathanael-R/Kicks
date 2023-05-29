@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import blueShoe from "../assets/blueShoe.png";
 import { useQuery, gql } from "@apollo/client";
+import { useStore } from "../store";
 import Card from "./Card";
 //import
 const CATALOGUES = gql`
@@ -42,11 +41,11 @@ const Catalogue = () => {
     });
   };
   return (
-    <section className="h-[100vh] px-48 py-28 flex flex-col snap-start">
+    <section className="h-[100vh] py-28 flex flex-col snap-start px-44">
       <h2 className="text-6xl mb-8">All Shoes</h2>
       <div className="flex flex-wrap gap-4">
-        {data.shoes.data.map((shoe) => (
-          <Card />
+        {data.shoes.data.map((product) => (
+          <Card key={product.id} product={product.attributes}/>
         ))}
       </div>
     </section>

@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { getProducts } from "../products/product";
 import { useStore } from "../store";
+import blueShoe from "../assets/blueShoe.png";
 import { useQuery, gql } from "@apollo/client";
+
 const CATALOGUES = gql`
   {
     shoes {
@@ -26,41 +28,38 @@ const CATALOGUES = gql`
     }
   }
 `;
+
+
 const Card = ({product}) => {
-  const id = props.id;
-  const quantity = props.quantity;
-  const products = getProducts(id);
   const addToCart = useStore((store) => store.addToCart)
 //import
-
   const { loading, error, data } = useQuery(CATALOGUES);
 
   if (loading) return <p>Loading...</p>;
   if (error) return error + <p>error.message</p>;
 
-
   return (
     <div
       className="w-[27rem] h-[18rem] bg-black flex flex-col p-4 justify-between items-center"
-      key={shoe.id}
+      key={product.id}
     >
       <div className="flex gap-4 h-[15rem]">
         <div className="relative">
           <p className="bg-red-700 p-1 w-fit text-sm font-bold text-white absolute top-2 left-2 rounded-lg">
-            {shoe.attributes.collection}
+            {product.collection}
           </p>
 
           <img
-            src={shoe.attributes.img}
+            src={product.img}
             alt=""
             className="object-cover h-[12rem] w-[13rem]"
           />
         </div>
         <div className="text-white flex flex-col gap-2">
           <div className="flex flex-col gap-2 mb-auto">
-            <h3 className="text-3xl font-semibold">{shoe.attributes.title}</h3>
+            <h3 className="text-3xl font-semibold">{product.title}</h3>
             <p className="text-yellow-400 text-4xl font-semibold">
-              ${shoe.attributes.price}
+              ${product.price}
             </p>
           </div>
           <div className="flex gap-4">
@@ -79,7 +78,7 @@ const Card = ({product}) => {
       </div>
       <div className="flex gap-4 mt-6">
         <button className="bg-white h-10 font-bold w-[13rem]">Order Now</button>
-        <button className="bg-white h-10 font-bold w-[11rem]" onClick={addToCart(product.id)}>
+        <button className="bg-white h-10 font-bold w-[11rem]" onClick={() => {addToCart(product)}}>
           Add to Cart
         </button>
       </div>

@@ -3,7 +3,7 @@ import coloured from '../assets/colourful.png'
 const Faq = () => {
   
   return (
-    <section className="px-[10%] h-[100vh] flex justify-center items-center snap-start snap-always"> 
+    <section className="px-44 h-[100vh] flex justify-center items-center snap-start snap-always"> 
         <div className="flex shadow-[2px_2px_20px_2px_grey] rounded flex-wrap">
             <div className="md:flex hidden w-[50%]">
                 <img src={coloured} alt="" className='object-cover'/>

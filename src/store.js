@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
- const store = (set) => ({
+const store = (set, get) => ({
   cart: [],
   totalItems: 0,
   totalPrice: 0,
   addToCart: (product) => {
     const cart = get().cart;
-    const cartItem = cart.find((item) => item.id === product.id);
+    const cartItem = cart.find(item => item.id === product.id);
 
     if (cartItem) {
       const newCart = cart.map((item) => {
@@ -23,10 +23,10 @@ import { devtools, persist } from "zustand/middleware";
       }));
     } else {
       const newCart = [...cart, { product, quantity: 1 }];
-      set((state) => ({
+      set((store) => ({
         cart: newCart,
-        totalItems: state.totalItems + 1,
-        totalPrice: state.totalPrice + product.price,
+        totalItems: store.totalItems + 1,
+        totalPrice: store.totalPrice + product.price,
       }));
     }
   },
@@ -36,7 +36,7 @@ import { devtools, persist } from "zustand/middleware";
       cart: store.cart.filter((item) => item.id !== product.id),
       totalItems: store.totalItems,
       totalPrice: store.totalPrice - product.price,
-    })),
+    })), 
 });
 
 export const useStore = create(persist(devtools(store), { name: "Store" }));

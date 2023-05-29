@@ -2,15 +2,14 @@ import { useContext, useState } from "react";
 import { TiShoppingCart } from "react-icons/ti";
 import kickslogo from "../assets/kickslogo.png";
 import { Link } from "react-router-dom";
-import { CartContext } from "../Context/CartContext";
+import { useStore } from "../store";
+
 
 export default function NavBar({ darkModeToggle, darkMode }) {
-  const cart = useContext(CartContext)
   const [navbar, setNavbar] = useState(false);
-  
-  const count = cart.list.reduce((sum, product) => sum + product.quantity, 0)
+  const totalItems = useStore((store) => store.totalItems)
   return (
-    <nav className="w-full bg-[#191818] fixed z-40 px-56">
+    <nav className="w-full bg-[#191818] fixed z-40 px-44">
       <div className="justify-between mx-auto md:items-center md:flex">
         <div>
           <div className="flex items-center justify-between md:py-4 md:block">
@@ -111,7 +110,7 @@ export default function NavBar({ darkModeToggle, darkMode }) {
               </button>
             </Link>
             <p className="absolute top-0 right-0 text-white bg-red-500 px-1 font-bold">
-              {count}
+              {totalItems}
             </p>
           </div>
         </div>

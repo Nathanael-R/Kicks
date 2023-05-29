@@ -1,33 +1,74 @@
-import { CartContext } from "../Context/CartContext";
-import Card from "../components/Card";
-import { useContext } from "react";
+import { useStore } from "../store";
 const Cart = () => {
-  const cart = useContext(CartContext);
-  const productCount = cart.list.reduce(
-    (sum, product) => sum + product.quantity,
+  const cart = useStore((store) => store.cart);
+  const total = cart.reduce(
+    (sum, product) => sum + product.quantity * product.product.price,
     0
   );
-  
+  const totalItems = useStore((store) => store.totalItems);
+  const clearCart = useStore((store) => store.clearCart);
   return (
-    <section className="min-h-screen flex flex-col flex-wrap px-[15%] py-16 items-center justify-center gap-4">
-      {productCount > 0 ? (
-        <>
+    <section className="min-h-screen flex flex-col flex-wrap py-16 items-center justify-center gap-4">
+      {totalItems > 0 ? (
+        <div>
           <h2 className="text-2xl font-bold">Your cart Items:</h2>
-          <div className="flex gap-4">
-            {cart.list.map((currentProduct, index) => (
-              <Card
-                key={index}
-                id={currentProduct.id}
-                quantity={currentProduct.quantity}
-              />
-            ))}
-          </div>
+          {cart.map((product) => (
+            <div className="flex gap-4" key={product.id}>
+              <div
+                className="w-[27rem] h-[18rem] bg-black flex flex-col p-4 justify-between items-center"
+                key={product.id}
+                >
+                <div className="flex gap-4 h-[15rem]">
+                  <div className="relative">
+                    <p className="bg-red-700 p-1 w-fit text-sm font-bold text-white absolute top-2 left-2 rounded-lg">
+                      {product.product.collection}
+                    </p>
+
+                {console.log(cart)}
+                    <img
+                      src={product.product.img}
+                      alt=""
+                      className="object-cover h-[12rem] w-[13rem]"
+                    />
+                  </div>
+                  <div className="text-white flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 mb-auto">
+                      <h3 className="text-3xl font-semibold">
+                        {product.product.title}
+                      </h3>
+                      <p className="text-yellow-400 text-4xl font-semibold">
+                        ${product.product.price}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-4 mt-6">
+                  <button className="bg-white h-10 font-bold w-[13rem]">
+                    Order Now
+                  </button>
+                  <button
+                    className="bg-white h-10 font-bold w-[11rem]"
+                    onClick={() => {
+                      addToCart(product);
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
           <div className="flex">
             <h2 className="text-2xl font-semibold">Total:</h2>
-            <p className="text-2xl font-bold ml-2">${cart.cartTotal().toFixed(2)}</p>
+            <p className="text-2xl font-bold ml-2">${total.toFixed(2)}</p>
           </div>
-          <button className="bg-blue-800 py-3 px-7 font-bold text-white rounded" onClick={checkout}>Checkout</button>
-        </>
+          <button
+            className="bg-blue-800 py-3 px-7 font-bold text-white rounded"
+            onClick={() => clearCart}
+          >
+            Clear Cart
+          </button>
+        </div>
       ) : (
         <h2 className="text-3xl">Your Cart is currently empty</h2>
       )}
@@ -36,3 +77,71 @@ const Cart = () => {
 };
 
 export default Cart;
+
+/**
+ * import { useStore } from "../store";
+
+const Cart = () => {
+  const cart = useStore((store) => store.cart);
+  const total = cart.reduce(
+    (sum, product) => sum + product.quantity * product.product.price,
+    0
+  );
+  const totalItems = useStore((store) => store.totalItems);
+  const clearCart = useStore((store) => store.clearCart);
+
+  return (
+    <section className="min-h-screen flex flex-col flex-wrap py-16 items-center justify-center gap-4">
+      {totalItems > 0 ? (
+        <div>
+          <h2 className="text-2xl font-bold">Your cart Items:</h2>
+          {cart.map((product) => (
+            <div className="flex gap-4" key={product.id}>
+              <div className="w-[27rem] h-[18rem] bg-black flex flex-col p-4 justify-between items-center">
+                <div className="flex gap-4 h-[15rem]">
+                  <div className="relative">
+                    <p className="bg-red-700 p-1 w-fit text-sm font-bold text-white absolute top-2 left-2 rounded-lg">
+                      {product.product.collection}
+                    </p>
+                    <img
+                      src={product.product.img}
+                      alt=""
+                      className="object-cover h-[12rem] w-[13rem]"
+                    />
+                  </div>
+                  <div className="text-white flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 mb-auto">
+                      <h3 className="text-3xl font-semibold">
+                        {product.product.title}
+                      </h3>
+                      <p className="text-yellow-400 text-4xl font-semibold">
+                        ${product.product.price}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-4 mt-6">
+                  <button className="bg-white h-10 font-bold w-[13rem]">
+                    Order Now
+                  </button>
+                  <button
+                    className="bg-white h-10 font-bold w-[11rem]"
+                    onClick={() => {
+                      addToCart(product);
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="flex">
+            <h2 className="text-2xl font-semibold">Total:</h2>
+            <p className="text-2xl font-bold ml-2">${total.toFixed(2)}</p>
+          </div>
+          <button
+            className="bg-blue-800 py-3 px-7 font-bold text-white rounded"
+            onClick={() => clearCart
+
+ */
