@@ -1,78 +1,152 @@
-//AIR: price_1MldJvLHVtChsdIFIsZ6hkX9
+// import { useStore } from "../store";
+// const Cart = () => {
+//   // const cart = useStore((store) => store.cart);
+//   // // const total = cart.reduce(
+//   // //   (sum, product) => sum + product.product.quantity * product.product.price,
+//   // //   0
+//   // // );
+//   // const totalItems = useStore((store) => store.totalItems);
+//   // const clearCart = useStore((store) => store.clearCart);
+//   return (
+  
+//   );
+// };
+// export default Cart;
 
-const productList = [
-    {
-        id: 'price_1MldJvLHVtChsdIFIsZ6hkX9',
-        image: "https://i.ibb.co/2Ns9yqc/redShoe2.png",
-        title: 'AIR ZOOM',
-        desc: 'MENS SHOES',
-        price: 100
-    },
-    {
-        id: 'price_1MldiBLHVtChsdIFjepvhAcm',
-        image: "https://i.ibb.co/BBCbHDT/Rectangle-12.png",
-        title: 'AIR ZOOM',
-        desc: 'MENS SHOES',
-        price: 100
-    },
-    {
-        id: 3,
-        image: "https://i.ibb.co/XXtFmkB/Rectangle-13.png",
-        title: 'AIR ZOOM',
-        desc: 'MENS SHOES',
-        price: 100
-    },
-    {
-        id: 4,
-        image: "https://i.ibb.co/5jrcS3q/Rectangle-14.png",
-        title: 'AIR ZOOM',
-        desc: 'MENS SHOES',
-        price: 100
-    },
-    {
-        id: 5,
-        image: "https://i.ibb.co/fdxyjms/Rectangle-15.png",
-        title: 'AIR ZOOM',
-        desc: 'MENS SHOES',
-        price: 100
-    },
-    {
-        id: 6,
-        image: "https://i.ibb.co/23fTVLY/Rectangle-16.png",
-        title: 'AIR ZOOM',
-        desc: 'MENS SHOES',
-        price: 100
-    },
-    {
-        id: 7,
-        image: "https://i.ibb.co/sqvwz4M/Rectangle-17.png",
-        title: 'AIR ZOOM',
-        desc: 'MENS SHOES',
-        price: 100
-    },
-    {
-        id: 8,
-        image: "https://i.ibb.co/nctBB5F/Rectangle-18.png",
-        title: 'AIR ZOOM',
-        desc: 'MENS SHOES',
-        price: 100
-    }
-]
-{/*<img src="https://i.ibb.co/BBCbHDT/Rectangle-12.png" alt="Rectangle-12" border="0">
-<img src="https://i.ibb.co/XXtFmkB/Rectangle-13.png" alt="Rectangle-13" border="0">
-<img src="https://i.ibb.co/5jrcS3q/Rectangle-14.png" alt="Rectangle-14" border="0">
-<img src="https://i.ibb.co/fdxyjms/Rectangle-15.png" alt="Rectangle-15" border="0">
-<img src="https://i.ibb.co/23fTVLY/Rectangle-16.png" alt="Rectangle-16" border="0">
-<img src="https://i.ibb.co/sqvwz4M/Rectangle-17.png" alt="Rectangle-17" border="0">
-<img src="https://i.ibb.co/nctBB5F/Rectangle-18.png" alt="Rectangle-18" border="0"> */}
-function getProducts(id){
-    let products = productList.find(item => item.id === id)
+// {
+//   /* ) : (
+// <h2 className="text-3xl">Your Cart is currently empty</h2>
+// )}
+// </section>
+// ); */
+// }
 
-    if (products === undefined){
-        console.log(`This product doesn't exist:` + id)
-        return undefined
-    }
-    return products
-}
+// {/* <section className="min-h-screen flex flex-col flex-wrap py-16 items-center justify-center gap-4">
+// <div>
+//   <h2 className="text-2xl font-bold">Your cart Items:</h2>
+//   {cart.map((product) => (
+//     <div className="flex gap-4" key={product.id}>
+//       <div
+//         className="w-[27rem] h-[18rem] bg-black flex flex-col p-4 justify-between items-center"
+//         key={product.id}
+//       >
+//         <div className="flex gap-4 h-[15rem]">
+//           <div className="relative">
+//             {/* <p className="bg-red-700 p-1 w-fit text-sm font-bold text-white absolute top-2 left-2 rounded-lg">
+//                 {product.product.collection}
+//               </p> */}
 
-export {productList, getProducts}
+// //             {console.log(cart)}
+// //             <img
+// //               src={product.product.img}
+// //               alt=""
+// //               className="object-cover h-[12rem] w-[13rem]"
+// //             />
+// //           </div>
+// //           <div className="text-white flex flex-col gap-2">
+// //             <div className="flex flex-col gap-2 mb-auto">
+// //               <h3 className="text-3xl font-semibold">
+// //                 {product.product.title}
+// //               </h3>
+// //               <p className="text-yellow-400 text-4xl font-semibold">
+// //                 ${product.product.price}
+// //               </p>
+// //             </div>
+// //           </div>
+// //         </div>
+// //         <div className="flex gap-4 mt-6">
+// //           <button className="bg-white h-10 font-bold w-[13rem]">
+// //             Order Now
+// //           </button>
+// //           <button
+// //             className="bg-white h-10 font-bold w-[11rem]"
+// //             onClick={() => {
+// //               addToCart(product);
+// //             }}
+// //           >
+// //             Add to Cart
+// //           </button>
+// //         </div>
+// //       </div>
+// //       {/* <p className="text-2xl font-bold ml-2">${total.toFixed(2)}</p> */}
+// //     </div>
+// //   ))}
+// //   <div className="flex">
+// //     <h2 className="text-2xl font-semibold">Total:</h2>
+// //   </div>
+// //   <button
+// //     className="bg-blue-800 py-3 px-7 font-bold text-white rounded"
+// //     onClick={() => clearCart}
+// //   >
+// //     Clear Cart
+// //   </button>
+// // </div>
+// // </section> */}
+
+// /**
+//  * import { useStore } from "../store";
+
+// const Cart = () => {
+//   const cart = useStore((store) => store.cart);
+//   const total = cart.reduce(
+//     (sum, product) => sum + product.quantity * product.product.price,
+//     0
+//   );
+//   const totalItems = useStore((store) => store.totalItems);
+//   const clearCart = useStore((store) => store.clearCart);
+
+//   return (
+//     <section className="min-h-screen flex flex-col flex-wrap py-16 items-center justify-center gap-4">
+//       {totalItems > 0 ? (
+//         <div>
+//           <h2 className="text-2xl font-bold">Your cart Items:</h2>
+//           {cart.map((product) => (
+//             <div className="flex gap-4" key={product.id}>
+//               <div className="w-[27rem] h-[18rem] bg-black flex flex-col p-4 justify-between items-center">
+//                 <div className="flex gap-4 h-[15rem]">
+//                   <div className="relative">
+//                     <p className="bg-red-700 p-1 w-fit text-sm font-bold text-white absolute top-2 left-2 rounded-lg">
+//                       {product.product.collection}
+//                     </p>
+//                     <img
+//                       src={product.product.img}
+//                       alt=""
+//                       className="object-cover h-[12rem] w-[13rem]"
+//                     />
+//                   </div>
+//                   <div className="text-white flex flex-col gap-2">
+//                     <div className="flex flex-col gap-2 mb-auto">
+//                       <h3 className="text-3xl font-semibold">
+//                         {product.product.title}
+//                       </h3>
+//                       <p className="text-yellow-400 text-4xl font-semibold">
+//                         ${product.product.price}
+//                       </p>
+//                     </div>
+//                   </div>
+//                 </div>
+//                 <div className="flex gap-4 mt-6">
+//                   <button className="bg-white h-10 font-bold w-[13rem]">
+//                     Order Now
+//                   </button>
+//                   <button
+//                     className="bg-white h-10 font-bold w-[11rem]"
+//                     onClick={() => {
+//                       addToCart(product);
+//                     }}
+//                   >
+//                     Add to Cart
+//                   </button>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//           <div className="flex">
+//             <h2 className="text-2xl font-semibold">Total:</h2>
+//             <p className="text-2xl font-bold ml-2">${total.toFixed(2)}</p>
+//           </div>
+//           <button
+//             className="bg-blue-800 py-3 px-7 font-bold text-white rounded"
+//             onClick={() => clearCart
+
+//  */

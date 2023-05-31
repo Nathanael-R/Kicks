@@ -7,7 +7,7 @@ import { useStore } from "../store";
 
 export default function NavBar({ darkModeToggle, darkMode }) {
   const [navbar, setNavbar] = useState(false);
-  const totalItems = useStore((store) => store.totalItems)
+  const totalItems = useStore((state) => state.totalItems)
   return (
     <nav className="w-full bg-[#191818] fixed z-40 px-44">
       <div className="justify-between mx-auto md:items-center md:flex">

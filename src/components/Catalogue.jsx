@@ -1,7 +1,6 @@
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useQuery, gql } from "@apollo/client";
-import { useStore } from "../store";
 import Card from "./Card";
 //import
 const CATALOGUES = gql`

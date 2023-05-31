@@ -1,147 +1,31 @@
-import { useStore } from "../store";
+import React from 'react'
+import { useStore } from '../store'
 const Cart = () => {
-  const cart = useStore((store) => store.cart);
-  const total = cart.reduce(
-    (sum, product) => sum + product.quantity * product.product.price,
-    0
-  );
-  const totalItems = useStore((store) => store.totalItems);
-  const clearCart = useStore((store) => store.clearCart);
+  const cart = useStore((state) => state.cart)
+  const total = cart.reduce((sum, item) => sum + item.quantity * item.price, 0)
+  const remove = useStore((state) => state.removeItem)
+  const clear = useStore((state) => state.clearCart)
   return (
-    <section className="min-h-screen flex flex-col flex-wrap py-16 items-center justify-center gap-4">
-      {totalItems > 0 ? (
-        <div>
-          <h2 className="text-2xl font-bold">Your cart Items:</h2>
-          {cart.map((product) => (
-            <div className="flex gap-4" key={product.id}>
-              <div
-                className="w-[27rem] h-[18rem] bg-black flex flex-col p-4 justify-between items-center"
-                key={product.id}
-                >
-                <div className="flex gap-4 h-[15rem]">
-                  <div className="relative">
-                    <p className="bg-red-700 p-1 w-fit text-sm font-bold text-white absolute top-2 left-2 rounded-lg">
-                      {product.product.collection}
-                    </p>
-
-                {console.log(cart)}
-                    <img
-                      src={product.product.img}
-                      alt=""
-                      className="object-cover h-[12rem] w-[13rem]"
-                    />
-                  </div>
-                  <div className="text-white flex flex-col gap-2">
-                    <div className="flex flex-col gap-2 mb-auto">
-                      <h3 className="text-3xl font-semibold">
-                        {product.product.title}
-                      </h3>
-                      <p className="text-yellow-400 text-4xl font-semibold">
-                        ${product.product.price}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-4 mt-6">
-                  <button className="bg-white h-10 font-bold w-[13rem]">
-                    Order Now
-                  </button>
-                  <button
-                    className="bg-white h-10 font-bold w-[11rem]"
-                    onClick={() => {
-                      addToCart(product);
-                    }}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-          <div className="flex">
-            <h2 className="text-2xl font-semibold">Total:</h2>
-            <p className="text-2xl font-bold ml-2">${total.toFixed(2)}</p>
-          </div>
-          <button
-            className="bg-blue-800 py-3 px-7 font-bold text-white rounded"
-            onClick={() => clearCart}
-          >
-            Clear Cart
-          </button>
+    <section className='py-28 px-44 flex flex-col items-center justify-center'>
+      <h2 className='text-center font-semibold text-4xl mb-12'>Your Cart Items</h2>
+      <div className="flex flex-wrap gap-8 mb-12">
+      {cart.map((item) => (
+        <div className="flex flex-col w-64 h-[26rem]" key={item.img}>
+          <img src={item.img} className='w-full h-48 object-cover' alt=""/>
+          <h3 className='font-semibold text-3xl' >{item.title}</h3>
+          <p className='text-xl'>{item.description}</p>
+          <p className='text-2xl text-yellow-300 font-bold  mb-auto'>${item.price}</p>
+          <button className='w-full bg-red-600 text-white font-semibold p-3 ' onClick={() => remove(item)}>Remove from Cart</button>
         </div>
-      ) : (
-        <h2 className="text-3xl">Your Cart is currently empty</h2>
-      )}
+      ))}
+      </div>
+      <div className="flex items-center gap-2">
+        <p className='text-3xl font-semibold'>Total Cost:</p>
+      <p className='text-3xl font-bold'>${total.toFixed(2)}</p>
+      </div>
+      <button className="mt-12 w-80 m-auto p-3 bg-red-600 font-bold text-white" onClick={() => clear}>Clear Cart</button>
     </section>
-  );
-};
+  )
+}
 
-export default Cart;
-
-/**
- * import { useStore } from "../store";
-
-const Cart = () => {
-  const cart = useStore((store) => store.cart);
-  const total = cart.reduce(
-    (sum, product) => sum + product.quantity * product.product.price,
-    0
-  );
-  const totalItems = useStore((store) => store.totalItems);
-  const clearCart = useStore((store) => store.clearCart);
-
-  return (
-    <section className="min-h-screen flex flex-col flex-wrap py-16 items-center justify-center gap-4">
-      {totalItems > 0 ? (
-        <div>
-          <h2 className="text-2xl font-bold">Your cart Items:</h2>
-          {cart.map((product) => (
-            <div className="flex gap-4" key={product.id}>
-              <div className="w-[27rem] h-[18rem] bg-black flex flex-col p-4 justify-between items-center">
-                <div className="flex gap-4 h-[15rem]">
-                  <div className="relative">
-                    <p className="bg-red-700 p-1 w-fit text-sm font-bold text-white absolute top-2 left-2 rounded-lg">
-                      {product.product.collection}
-                    </p>
-                    <img
-                      src={product.product.img}
-                      alt=""
-                      className="object-cover h-[12rem] w-[13rem]"
-                    />
-                  </div>
-                  <div className="text-white flex flex-col gap-2">
-                    <div className="flex flex-col gap-2 mb-auto">
-                      <h3 className="text-3xl font-semibold">
-                        {product.product.title}
-                      </h3>
-                      <p className="text-yellow-400 text-4xl font-semibold">
-                        ${product.product.price}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-4 mt-6">
-                  <button className="bg-white h-10 font-bold w-[13rem]">
-                    Order Now
-                  </button>
-                  <button
-                    className="bg-white h-10 font-bold w-[11rem]"
-                    onClick={() => {
-                      addToCart(product);
-                    }}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-          <div className="flex">
-            <h2 className="text-2xl font-semibold">Total:</h2>
-            <p className="text-2xl font-bold ml-2">${total.toFixed(2)}</p>
-          </div>
-          <button
-            className="bg-blue-800 py-3 px-7 font-bold text-white rounded"
-            onClick={() => clearCart
-
- */
+export default Cart

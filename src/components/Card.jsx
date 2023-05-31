@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { getProducts } from "../products/product";
 import { useStore } from "../store";
 import blueShoe from "../assets/blueShoe.png";
 import { useQuery, gql } from "@apollo/client";
@@ -31,7 +29,7 @@ const CATALOGUES = gql`
 
 
 const Card = ({product}) => {
-  const addToCart = useStore((store) => store.addToCart)
+  const addToCart = useStore((state) => state.addToCart)
 //import
   const { loading, error, data } = useQuery(CATALOGUES);
 

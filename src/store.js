@@ -1,45 +1,57 @@
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
-const store = (set, get) => ({
+const initial = {
   cart: [],
   totalItems: 0,
   totalPrice: 0,
-  addToCart: (product) => {
-    const cart = get().cart;
-    const cartItem = cart.find(item => item.id === product.id);
+};
+export const useStore = create(
+  persist(
+    (set, get) => ({
+      ...initial,
+      addToCart: (product) => {
+        const cart = get().cart;
+        const cartItem = cart.find((item) => item.img === product.img);
 
-    if (cartItem) {
-      const newCart = cart.map((item) => {
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item;
-      });
+        if (cartItem) {
+          const newCart = cart.map((item) =>
+            item.img === product.img
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          );
+          set((state) => ({
+            cart: newCart,
+            totalItems: state.totalItems + 1,
+            totalPrice: state.totalPrice + product.price,
+          }));
+        } else {
+          const newCart = [...cart, { ...product, quantity: 1 }]
+          set((state) => ({
+            cart: newCart,
+            totalItems: state.totalItems + 1,
+            totalPrice: state.totalPrice + product.price,
+          }));
+        }
+      },
+      removeItem: (product) => {
+        set((state) => ({
+          cart: state.cart.filter((item) => item.img !== product.img),
+          totalItems: state.totalItems - product.quantity,
+          totalPrice: state.totalPrice - product.price,
+        }));
+      },
+      clearCart: () => {
+        set(initial), console.log("clicked");
+      },
+    }),
 
-      set((store) => ({
-        cart: newCart,
-        totalItems: store.totalItems + 1,
-        totalPrice: store.totalPrice + product.price,
-      }));
-    } else {
-      const newCart = [...cart, { product, quantity: 1 }];
-      set((store) => ({
-        cart: newCart,
-        totalItems: store.totalItems + 1,
-        totalPrice: store.totalPrice + product.price,
-      }));
+    {
+      name: "Store",
+      storage: createJSONStorage(() => localStorage),
     }
-  },
-  clearCart: () => set({ cart: [] }),
-  removeItem: (product) =>
-    set((store) => ({
-      cart: store.cart.filter((item) => item.id !== product.id),
-      totalItems: store.totalItems,
-      totalPrice: store.totalPrice - product.price,
-    })), 
-});
-
-export const useStore = create(persist(devtools(store), { name: "Store" }));
+  )
+);
 
 /*
    const getItemAmount = (id) => {
